@@ -41,13 +41,3 @@ impl<T: Model, U: Model> Model for (T, U) {
         pearlite! { (@self.0, @self.1) }
     }
 }
-
-#[cfg(feature = "num_bigint")]
-impl Model for num_bigint::BigInt {
-    type ModelTy = crate::Int;
-    #[logic]
-    #[trusted]
-    fn model(self) -> Self::ModelTy {
-        pearlite! { absurd }
-    }
-}
